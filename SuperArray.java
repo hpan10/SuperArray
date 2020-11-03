@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class SuperArray{
 
   //instance variables
@@ -40,6 +42,27 @@ public class SuperArray{
       newArray[start] = get(start);
     }
     data = newArray;
+  }
+
+  public boolean isEmpty(){
+    return size == 0;
+  }
+
+  public String toString(){
+    String toString = "[";
+    for (int i = 0; i < size; i++){
+      if (i != size - 1) toString += data[i] + ", ";
+      else toString += data[i] + "]";
+    }
+    return toString;
+  }
+
+  public boolean contains(String s){
+    for (int i = 0; i < data.length; i++){
+      if (data[i] == null);
+      else if (data[i].equals(s)) return true;
+    }
+    return false;
   }
 
 }

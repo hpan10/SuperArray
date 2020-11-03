@@ -25,11 +25,17 @@ public class SuperArrayTester{
     SuperArray a2 = new SuperArray();
     System.out.println(Arrays.toString(a2.data));
     a2.add("Test");
+    System.out.println(a2);
     a2.add("Test");
+    System.out.println(a2);
     a2.add("Test");
+    System.out.println(a2);
     a2.add("Test");
+    System.out.println(a2);
     a2.add("Test");
+    System.out.println(a2);
     a2.add("Test");
+    System.out.println(a2);
     a2.add("Test");
     a2.add("Test");
     a2.add("Test");
@@ -39,6 +45,10 @@ public class SuperArrayTester{
     a2.add("HA");
     System.out.println(Arrays.toString(a2.data));
     System.out.println(a2.size()); // Should print 11
+    System.out.println(a2);
+    System.out.println(a2.contains("Test"));
+    System.out.println(a2.contains("hehe"));
+    System.out.println(a2.contains("HA"));
 
     SuperArray words = new SuperArray();
     words.add("kani");
@@ -49,6 +59,7 @@ public class SuperArrayTester{
     }
     System.out.println(words.size()); // Should print 3
     System.out.println(Arrays.toString(words.data));
+
 
   }
 
