@@ -14,12 +14,10 @@ public class SuperArrayTester{
     System.out.println(a1.get(0)); // Should print "Zero"
     System.out.println(a1.get(1)); // Should print "Nothing exists at index 1"
     System.out.println(Arrays.toString(a1.data));
-    a1.resize();
     System.out.println(Arrays.toString(a1.data));
     a1.add("One");
     a1.add("Two");
     System.out.println(a1.size()); //Should print 3
-    a1.resize();
     System.out.println(Arrays.toString(a1.data));
 
     SuperArray a2 = new SuperArray();

@@ -74,7 +74,7 @@ public class SuperArray{
     return "Nothing exists at index " + index;
   }
 
-  public void resize(){
+  private void resize(){
     String[] newArray = new String[data.length * 2];
     for (int start = 0; start < size; start++){
       newArray[start] = get(start);
@@ -93,6 +93,14 @@ public class SuperArray{
       else toString += data[i];
     }
     return toString + "]";
+  }
+
+  public String[] toArray(){
+    String[] array = new String[data.length];
+    for (int i = 0; i < data.length; i++){
+      array[i] = data[i];
+    }
+    return array;
   }
 
   public boolean contains(String s){

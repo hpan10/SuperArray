@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class SuperArrayTester2{
 
   public static void main(String[] args){
@@ -15,7 +17,7 @@ public class SuperArrayTester2{
     System.out.println(a.data.length);
     System.out.println(a.size());
 
-    SuperArray b = new SuperArray(5);
+    SuperArray b = new SuperArray(4);
     b.add("one");
     b.add("two");
     b.add("three");
@@ -31,7 +33,10 @@ public class SuperArrayTester2{
     System.out.println(b.indexOf("five"));
     System.out.println(b.indexOf("four"));
 
-
+    String[] c = b.toArray();
+    System.out.println(Arrays.toString(c));
+    System.out.println(c.length);
+    System.out.println(c[2]);
 
 
 
