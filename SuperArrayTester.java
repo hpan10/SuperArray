@@ -49,6 +49,11 @@ public class SuperArrayTester{
     System.out.println(a2.contains("Test"));
     System.out.println(a2.contains("hehe"));
     System.out.println(a2.contains("HA"));
+    System.out.println(a2);
+    a2.clear();
+    System.out.println(Arrays.toString(a2.data));
+    System.out.println(a2);
+
 
     SuperArray words = new SuperArray();
     words.add("kani");
