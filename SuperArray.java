@@ -26,29 +26,30 @@ public class SuperArray{
   }
 
   public void add(int index, String element){
-    if (size == data.length) resize();
-    if (data[index] != null){
-      for (int i = index; i < size; i++){
-        String temp = data[i];
-        data[i + 1] = temp;
+    if (!(index > size || index < 0)){
+      if (size == data.length) resize();
+      if (data[index] != null){
+        for (int i = size; i >= index; i--){
+          data[i + 1] = data[i];
+        }
       }
+      data[index] = element;
+      size++;
     }
-    data[index] = element;
-    size++;
   }
 
   public String remove(int index){
-    String temp = null;
-    if (index >= size) return "Nothing exists at this index";
-    if (data[index] != null){
-      for (int i = size - 1; i >= index; i--){
-        String temp2 = data[i];
-        data[i] = temp;
-        temp = temp2;
+    if (!(index > size - 1|| index < 0)){
+      String value = data[index];
+      if (data[index] != null){
+        for (int i = index; i < size - 1; i++){
+          data[i] = data[i + 1];
+        }
       }
+      size--;
+      return value;
     }
-    size--;
-    return temp;
+    return "Nothing exists at this index";
   }
 
   public String get(int index){
@@ -96,8 +97,8 @@ public class SuperArray{
   }
 
   public String[] toArray(){
-    String[] array = new String[data.length];
-    for (int i = 0; i < data.length; i++){
+    String[] array = new String[size];
+    for (int i = 0; i < size; i++){
       array[i] = data[i];
     }
     return array;
@@ -116,6 +117,48 @@ public class SuperArray{
     for (int start = 0; start < size; start ++){
       data[start] = null;
     }
+  }
+
+  public static void removeDuplicates(SuperArray s){
+    for (int i = 0; i < s.size();){
+      if (s.indexOf(s.get(i)) != i){
+        s.remove(i);
+      }
+      else i++;
+    }
+  }
+
+  public static SuperArray findOverlap(SuperArray a, SuperArray b){
+    SuperArray c = new SuperArray(1);
+    for (int i = 0; i < a.size(); i++){
+      if (b.indexOf(a.get(i)) != -1){
+        c.add(a.get(i));
+      }
+    }
+    removeDuplicates(c);
+    return c;
+  }
+
+  public int lastIndexOf(String value){
+    if (contains(value)){
+      for (int index = size - 1; index >= 0; index--){
+        if (data[index].equals(value)) return index;
+      }
+    }
+    return -1;
+  }
+
+  public boolean equals(SuperArray other){
+    return (this.toString().equals(other.toString()));
+  }
+
+  public static SuperArray zip(SuperArray a, SuperArray b){
+    SuperArray c = new SuperArray(a.size + b.size);
+    for (int i = 0; i < Math.max(a.size, b.size); i++){
+      if (i < a.size) c.add(a.get(i));
+      if (i < b.size) c.add(b.get(i));
+    }
+    return c;
   }
 
 }

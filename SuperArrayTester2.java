@@ -26,12 +26,14 @@ public class SuperArrayTester2{
     System.out.println(b);
     System.out.println(b.size());
     System.out.println(b.data.length);
-    b.remove(3);
+    System.out.println(b.remove(3));
     System.out.println(b);
     System.out.println(b.size());
     System.out.println(b.data.length);
     System.out.println(b.indexOf("five"));
     System.out.println(b.indexOf("four"));
+    System.out.println(b.remove(-1));
+    System.out.println(b.remove(8));
 
     String[] c = b.toArray();
     System.out.println(Arrays.toString(c));
