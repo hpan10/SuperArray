@@ -17,7 +17,7 @@ public class Demo{
     SuperArray b = new SuperArray();
     b.add("d");   b.add("s");    b.add("b");    b.add("b");   b.add("u");
 
-    SuperArray c = SuperArray.findOverlap(a,b);
+    SuperArray c = findOverlap(a,b);
     System.out.println(c);
 
     SuperArray equalCheck1 = new SuperArray(7);
@@ -39,10 +39,30 @@ public class Demo{
     zipCheck1.add("a");   zipCheck1.add("b");   zipCheck1.add("c");
 
     zipCheck2.add("0");   zipCheck2.add("1");   zipCheck2.add("2");
-    zipCheck2.add("3");   zipCheck2.add("4");   
+    zipCheck2.add("3");   zipCheck2.add("4");
 
-    SuperArray zipped = SuperArray.zip(zipCheck1, zipCheck2);
+    SuperArray zipped = zip(zipCheck1, zipCheck2);
     System.out.println(zipped);
+  }
 
-}
+  public static SuperArray findOverlap(SuperArray a, SuperArray b){
+    SuperArray c = new SuperArray(1);
+    for (int i = 0; i < a.size(); i++){
+      if (b.contains(a.get(i))){
+        c.add(a.get(i));
+      }
+    }
+    SuperArray.removeDuplicates(c);
+    return c;
+  }
+
+  public static SuperArray zip(SuperArray a, SuperArray b){
+    SuperArray c = new SuperArray(a.size() + b.size());
+    for (int i = 0; i < Math.max(a.size(), b.size()); i++){
+      if (i < a.size()) c.add(a.get(i));
+      if (i < b.size()) c.add(b.get(i));
+    }
+    return c;
+  }
+
 }

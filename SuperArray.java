@@ -128,17 +128,6 @@ public class SuperArray{
     }
   }
 
-  public static SuperArray findOverlap(SuperArray a, SuperArray b){
-    SuperArray c = new SuperArray(1);
-    for (int i = 0; i < a.size(); i++){
-      if (b.indexOf(a.get(i)) != -1){
-        c.add(a.get(i));
-      }
-    }
-    removeDuplicates(c);
-    return c;
-  }
-
   public int lastIndexOf(String value){
     if (contains(value)){
       for (int index = size - 1; index >= 0; index--){
@@ -150,15 +139,6 @@ public class SuperArray{
 
   public boolean equals(SuperArray other){
     return (this.toString().equals(other.toString()));
-  }
-
-  public static SuperArray zip(SuperArray a, SuperArray b){
-    SuperArray c = new SuperArray(a.size + b.size);
-    for (int i = 0; i < Math.max(a.size, b.size); i++){
-      if (i < a.size) c.add(a.get(i));
-      if (i < b.size) c.add(b.get(i));
-    }
-    return c;
   }
 
 }
