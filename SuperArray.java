@@ -10,8 +10,11 @@ public class SuperArray{
     size = 0;
   }
 
-  public SuperArray(int InitialCapacity){
-    data = new String[InitialCapacity];
+  public SuperArray(int initialCapacity){
+    if (initialCapacity < 0){
+      throw new IllegalArgumentException("Your initialCapcity cannot be negative!");
+    }
+    data = new String[initialCapacity];
     size = 0;
   }
 
@@ -26,35 +29,38 @@ public class SuperArray{
   }
 
   public void add(int index, String element){
-    if (!(index > size || index < 0)){
-      if (size == data.length) resize();
-      if (data[index] != null){
-        for (int i = size; i >= index; i--){
-          data[i + 1] = data[i];
-        }
-      }
-      data[index] = element;
-      size++;
+    if (index < 0 || index > size()){
+      throw new IndexOutOfBoundsException("Index " + index + " is out of range");
     }
+    if (size == data.length) resize();
+    if (data[index] != null){
+      for (int i = size; i >= index; i--){
+        data[i + 1] = data[i];
+      }
+    }
+    data[index] = element;
+    size++;
   }
 
   public String remove(int index){
-    if (!(index > size - 1|| index < 0)){
-      String value = data[index];
-      if (data[index] != null){
-        for (int i = index; i < size - 1; i++){
-          data[i] = data[i + 1];
-        }
-      }
-      size--;
-      return value;
+    if (index < 0 || index >= size()){
+      throw new IndexOutOfBoundsException("Index " + index + " is out of range");
     }
-    return "Nothing exists at this index";
+    String temp = data[index];
+    if (data[index] != null){
+      for (int i = index; i < size - 1; i++){
+        data[i] = data[i + 1];
+      }
+    }
+    size--;
+    return temp;
   }
 
   public String get(int index){
-    if (index >= 0 && index <= size - 1) return data[index];
-    return "Nothing exists at index " + index;
+    if (index < 0 || index >= size()){
+      throw new IndexOutOfBoundsException("Index " + index + " is out of range");
+    }
+    return data[index];
   }
 
   public int indexOf(String s){
@@ -67,16 +73,16 @@ public class SuperArray{
   }
 
   public String set(int index, String element){
-    if (index >= 0 && index <= size - 1){
-      String temp = data[index];
-      data[index] = element;
-      return temp;
+    if (index < 0 || index >= size()){
+      throw new IndexOutOfBoundsException("Index " + index + " is out of range");
     }
-    return "Nothing exists at index " + index;
+    String temp = data[index];
+    data[index] = element;
+    return temp;
   }
 
   private void resize(){
-    String[] newArray = new String[data.length * 2];
+    String[] newArray = new String[data.length * 2 + 1];
     for (int start = 0; start < size; start++){
       newArray[start] = get(start);
     }
