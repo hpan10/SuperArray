@@ -34,7 +34,7 @@ public class SuperArray{
     }
     if (size == data.length) resize();
     if (data[index] != null){
-      for (int i = size; i >= index; i--){
+      for (int i = size - 1; i >= index; i--){
         data[i + 1] = data[i];
       }
     }

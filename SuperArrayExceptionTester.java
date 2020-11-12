@@ -44,6 +44,14 @@ public class SuperArrayExceptionTester{
     }
     System.out.println(test.size());
 
+    test.add(4, "hi");
+    System.out.println(test);
+    System.out.println(test.data.length);
+    System.out.println(test.size());
+
+
+
+
   }
 
 }
